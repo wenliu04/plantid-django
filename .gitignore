@@ -1,0 +1,19 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Django database
+*.sqlite3
+db.sqlite3
+
+# Uploaded media
+/media/
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
