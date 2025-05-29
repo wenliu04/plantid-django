@@ -19,3 +19,4 @@ db.sqlite3
 .DS_Store
 
 /data/*.csv
+data/metadata.csv
