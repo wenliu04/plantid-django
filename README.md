@@ -18,7 +18,7 @@ PlantID is a Django-based web application that allows users to upload photos of 
 
 Backend: Python, Django
 
-Frontend: HTML (with basic CSS), Django Templates
+Frontend: HTML (with tailwind CSS), Django Templates
 
 ML Model: gerald29/plantclef2024 (based on facebook/dinov2-base)
 
