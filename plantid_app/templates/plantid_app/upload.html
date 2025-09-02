@@ -1,31 +1,70 @@
-<!--plantid_app/templates/plantid_app/upload.html-->
+<!-- plantid_app/templates/plantid_app/upload.html -->
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Upload Plant Image</title>
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Plant Image</title>
+    <!-- 引入 Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<body>
-    <h1>Upload a Plant Image</h1>
-    <form method="post" enctype="multipart/form-data">
+  <body class="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 text-slate-800">
+    <div class="mx-auto max-w-2xl py-10 px-6">
+      <!-- 标题 -->
+      <h1 class="text-3xl font-bold text-emerald-700 mb-6">
+        🌱 Upload a Plant Image
+      </h1>
+
+      <!-- 上传表单 -->
+      <form
+        method="post"
+        enctype="multipart/form-data"
+        class="bg-white shadow-md rounded-2xl p-6 space-y-4"
+      >
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Upload</button>
-    </form>
-    {% if image %}
-        <h2>Uploaded Image</h2>
-        <img src="{{ image.image.url }}" width="300"><br>
-        <p>uploaded at: {{ image.uploaded_at }}</p>
-    {% else %}
-        <p>No image uploaded yet.</p>
-    {% endif %}
+        <div class="space-y-3">
+          {{ form.as_p }}
+        </div>
+        <button
+          type="submit"
+          class="inline-flex items-center px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-medium shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+        >
+          ⬆️ Upload
+        </button>
+      </form>
 
-    {% if prediction %}
-        <h3>Prediction Result：{{ prediction }}</h3>
-    {% endif %}
+      <!-- 显示上传结果 -->
+      {% if image %}
+      <div
+        class="mt-8 bg-white shadow-md rounded-2xl p-6 border border-slate-200"
+      >
+        <h2 class="text-xl font-semibold text-slate-700 mb-3">
+          ✅ Uploaded Image
+        </h2>
+        <img
+          src="{{ image.image.url }}"
+          alt="uploaded"
+          class="w-full max-w-md rounded-xl border border-slate-200 shadow"
+        />
+        <p class="mt-3 text-sm text-slate-500">
+          Uploaded at: {{ image.uploaded_at }}
+        </p>
+      </div>
+      {% else %}
+      <p class="mt-8 text-slate-500 italic">No image uploaded yet.</p>
+      {% endif %}
 
-    
-</body>
+      <!-- 预测结果 -->
+      {% if prediction %}
+      <div
+        class="mt-6 px-4 py-3 rounded-xl bg-emerald-50 border border-emerald-200"
+      >
+        <h3 class="text-lg font-semibold text-emerald-700">
+          🔮 Prediction Result: {{ prediction }}
+        </h3>
+      </div>
+      {% endif %}
+    </div>
+  </body>
 </html>
-
